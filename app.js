@@ -13,13 +13,14 @@ $(function() {
         event.preventDefault();
     
         var formData = $(form).serialize();
+        formData.append('access-token','24f46362674c8046');
 
         $.ajax({
             type: 'POST',
             url: 'https://api.eatstreet.com/publicapi/v1/register-user',
             data: formData,
             contentType: "application/json",
-            dataType: "json",
+            dataType: "json"
         })
         .done(function(response) {            
             $('#success').html(data);
@@ -33,6 +34,7 @@ $(function() {
         event.preventDefault();
     
         var searchData = $(form).serialize();
+        searchData.append('access-token','24f46362674c8046');
 
         $.ajax({
             type: 'POST',
