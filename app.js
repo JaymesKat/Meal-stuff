@@ -18,15 +18,15 @@ $(function() {
             type: 'POST',
             url: 'https://api.eatstreet.com/publicapi/v1/register-user',
             data: formData,
-            contentType: "application/json; charset=utf-8",
+            contentType: "application/json",
             dataType: "json",
         })
         .done(function(response) {            
             $('#success').html(data);
         })
-        .error(){
+        .fail(function(error){
             $('#success').html("<p>No restaurants found</p>");
-        }
+        })
     });
     
     $("#search").submit(function(event) {
@@ -36,9 +36,9 @@ $(function() {
 
         $.ajax({
             type: 'POST',
-            url: 'https://api.eatstreet.com/publicapi/v1/restaurant/search?method=both',
+            url: 'https://api.eatstreet.com/publicapi/v1/restaurant/search?',
             data: searchData,
-            contentType: "application/json; charset=utf-8",
+            contentType: "application/json",
             dataType: "json",
         })
         .done(function(response) {            
