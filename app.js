@@ -22,8 +22,11 @@ $(function() {
             dataType: "json",
         })
         .done(function(response) {            
-            $('.result').html(data);
+            $('#success').html(data);
         })
+        .error(){
+            $('#success').html("<p>No restaurants found</p>");
+        }
     });
     
     $("#search").submit(function(event) {
@@ -33,14 +36,14 @@ $(function() {
 
         $.ajax({
             type: 'POST',
-            url: 'https://api.eatstreet.com/publicapi/v1/restaurant/search?'+searchData,
+            url: 'https://api.eatstreet.com/publicapi/v1/restaurant/search?method=both',
             data: searchData,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
         })
         .done(function(response) {            
             $('#search').val('');
-            $('.result').html(data);
+            $('#search_results').html(data);
         })
     });
 });
